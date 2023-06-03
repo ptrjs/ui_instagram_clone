@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ui_instagram_clone/util/bubble_stories.dart';
+import 'package:ui_instagram_clone/util/user_posts.dart';
 
 class UserHome extends StatelessWidget {
   UserHome({Key? key}) : super(key: key);
@@ -13,6 +14,14 @@ class UserHome extends StatelessWidget {
     "Deny",
     "Michael",
     "Vincent",
+  ];
+  final List<String> caption = [
+    " Life is not about waiting for the storm to pass, but learning to dance in the rain and finding beauty in every drop that touches your soul.",
+    " Living my best",
+    " Finding inner strength",
+    " Creating happy memories",
+    " Embrace the journey",
+    " Chasing sunsets",
   ];
 
   @override
@@ -58,6 +67,17 @@ class UserHome extends StatelessWidget {
                 return BubbleStories(text: people[index]);
               },
             ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: people.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return UserPosts(
+                    name: people[index],
+                    nameCaption: people[index],
+                    caption: caption[index],
+                  );
+                }),
           ),
         ],
       ),
